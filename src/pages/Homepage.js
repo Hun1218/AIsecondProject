@@ -1,25 +1,34 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "./Homepage.css";
+import { useState } from "react";
+import Modal from "../Modal";
+import "../css/Homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import mainLogo from "./images/로고.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef} from 'react';
-import axios from 'axios';
+import { useRef } from "react";
+import axios from "axios";
 
 const Homepage = () => {
-
   const navigate = useNavigate();
 
-  const login = sessionStorage.getItem('id');
+  const login = sessionStorage.getItem("id");
 
   const gojoin = () => {
-    navigate('/join');
-  }
+    navigate("/join");
+  };
 
   const gologin = () => {
-    navigate('/login');
-  }
+    navigate("/login");
+  };
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="containers">
@@ -28,7 +37,8 @@ const Homepage = () => {
           <img className="mainLogo" src={mainLogo} />
           <div className="mainHeaderButtons">
             <button onClick={gojoin}>회원가입</button>
-            <button onClick={gologin}>로그인</button>
+            <button onClick={openModal}>로그인</button>
+            <Modal open={modalOpen} close={closeModal} />
           </div>
         </div>
         <div className="MainScreen">
