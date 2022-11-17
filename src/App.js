@@ -20,6 +20,7 @@ function App() {
         <Route path="/my" element={<Mypage />} />
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPW" element={<FindPW />} />
+        console.log('hi');
       </Routes>
     </Router>
   );
